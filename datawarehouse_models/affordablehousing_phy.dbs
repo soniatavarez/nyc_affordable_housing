@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="Affordable_Housing" id="PostgreSQL-ad5" database="PostgreSQL" >
+	<schema name="instance" catalogname="Affordable_Housing" >
+		<table name="dim_borough_block_lottype" prior="dim_borough_block_lotType" >
+			<column name="borough_block_lottype_id" prior="borough_block_lotType_id" type="integer" jt="4" mandatory="y" />
+			<column name="latitude(internal)" type="varchar" length="100" jt="12" />
+			<column name="longitude(internal)" type="varchar" length="100" jt="12" />
+			<index name="pk_borough_block_lot" unique="PRIMARY_KEY" >
+				<column name="borough_block_lottype_id" />
+			</index>
+		</table>
+		<table name="dim_boroughtype" prior="dim_boroughType" >
+			<column name="boroughtype_id" prior="boroughType_id" type="integer" jt="4" mandatory="y" />
+			<column name="postcode" type="integer" jt="4" />
+			<column name="community_board" type="integer" jt="4" />
+			<index name="pk_borough" unique="PRIMARY_KEY" >
+				<column name="boroughtype_id" />
+			</index>
+		</table>
+		<table name="dim_building_unitstype" prior="dim_building_unitsType" >
+			<column name="building_unitstype_id" prior="building_unitsType_id" type="integer" jt="4" mandatory="y" />
+			<column name="studio_units" type="integer" jt="4" />
+			<column name="1_br_units" type="integer" jt="4" />
+			<column name="2_br_units" type="integer" jt="4" />
+			<column name="3_br_units" type="integer" jt="4" />
+			<column name="4_br_units" type="integer" jt="4" />
+			<column name="5_br_units" type="integer" jt="4" />
+			<column name="6_br_units" type="integer" jt="4" />
+			<column name="unknown_br_units" type="integer" jt="4" />
+			<column name="total_units" type="integer" jt="4" />
+			<column name="other_units" type="integer" jt="4" />
+			<index name="pk_building_units" unique="PRIMARY_KEY" >
+				<column name="building_unitstype_id" />
+			</index>
+		</table>
+		<table name="dim_buildingtype" prior="dim_buildingType" >
+			<column name="building_id" type="integer" jt="4" />
+			<column name="buildingtype_id" prior="buildingType_id" type="integer" jt="4" mandatory="y" />
+			<column name="house_number" type="integer" jt="4" />
+			<column name="street_name" type="varchar" length="100" jt="12" />
+			<column name="bin" type="integer" jt="4" />
+			<column name="postcode" type="integer" jt="4" />
+			<column name="nta" type="varchar" length="100" jt="12" />
+			<column name="latitude" type="varchar" length="100" jt="12" />
+			<column name="longitude" type="varchar" length="100" jt="12" />
+			<column name="reporting_construction_type" type="varchar" length="100" jt="12" />
+			<index name="pk_buildingtype_id" unique="UNIQUE_KEY" >
+				<column name="buildingtype_id" />
+			</index>
+			<index name="pk_buildingtype_id_001" unique="UNIQUE_KEY" >
+				<column name="buildingtype_id" />
+			</index>
+			<index name="pk_buildingtype_id_002" unique="UNIQUE_KEY" >
+				<column name="buildingtype_id" />
+			</index>
+			<index name="pk_buildingtype_id_003" unique="UNIQUE_KEY" >
+				<column name="buildingtype_id" />
+			</index>
+			<index name="pk_dim_buildingtype" unique="PRIMARY_KEY" >
+				<column name="buildingtype_id" />
+			</index>
+		</table>
+		<table name="dim_projecttype" prior="dim_projectType" >
+			<column name="projecttype_id" prior="projectType_id" type="integer" jt="4" mandatory="y" />
+			<column name="project_name" type="varchar" length="100" jt="12" />
+			<column name="extended_affordability_only" type="varchar" length="100" jt="12" />
+			<column name="prevailing_wage_status" type="varchar" length="100" jt="12" />
+			<index name="pk_project" unique="PRIMARY_KEY" >
+				<column name="projecttype_id" />
+			</index>
+		</table>
+		<table name="entity" prior="Entity" />
+		<table name="facts_housing" >
+			<column name="fact_id" type="integer" jt="4" mandatory="y" />
+			<column name="extremely_low-income_units" type="integer" jt="4" />
+			<column name="very_low-income_units" type="integer" jt="4" />
+			<column name="low_income_units" type="integer" jt="4" />
+			<column name="moderate_income_units" type="integer" jt="4" />
+			<column name="middle_income_units" type="integer" jt="4" />
+			<column name="counted_rental_units" type="integer" jt="4" />
+			<column name="counted_homeownership_units" type="integer" jt="4" />
+			<column name="all_counted_units" type="integer" jt="4" />
+			<column name="total_units" type="integer" jt="4" />
+			<column name="projecttype_id" prior="projectType_id" type="integer" jt="4" />
+			<column name="borough_block_lottype_id" prior="borough_block_lotType_id" type="integer" jt="4" />
+			<column name="building_unitstype_id" prior="building_unitsType_id" type="integer" jt="4" />
+			<column name="buildingtype_id" prior="buildingType_id" type="integer" jt="4" />
+			<column name="boroughtype_id" prior="boroughType_id" type="integer" jt="4" />
+			<index name="pk_fact" unique="PRIMARY_KEY" >
+				<column name="fact_id" />
+			</index>
+			<fk name="fk_fact_table_dim_borough_block_lottype" virtual="y" to_schema="Affordable_Housing.instance" to_table="dim_borough_block_lottype" >
+				<fk_column name="borough_block_lottype_id" pk="borough_block_lottype_id" />
+			</fk>
+			<fk name="fk_fact_table_dim_building_unitstype" virtual="y" to_schema="Affordable_Housing.instance" to_table="dim_building_unitstype" >
+				<fk_column name="building_unitstype_id" pk="building_unitstype_id" />
+			</fk>
+			<fk name="fk_fact_table_dim_buildingtype" virtual="y" to_schema="Affordable_Housing.instance" to_table="dim_buildingtype" >
+				<fk_column name="buildingtype_id" pk="buildingtype_id" />
+			</fk>
+			<fk name="fk_fact_table_dim_projecttype" virtual="y" to_schema="Affordable_Housing.instance" to_table="dim_projecttype" >
+				<fk_column name="projecttype_id" pk="projecttype_id" />
+			</fk>
+			<fk name="fk_facts_housing_dim_boroughtype" virtual="y" to_schema="Affordable_Housing.instance" to_table="dim_boroughtype" >
+				<fk_column name="boroughtype_id" pk="boroughtype_id" />
+			</fk>
+		</table>
+	</schema>
+	<layout name="Affordable_Housing" id="Layout-1b03" confirmed="y" show_relation="columns" >
+		<entity schema="Affordable_Housing.instance" name="dim_borough_block_lottype" color="C1D8EE" x="816" y="85" />
+		<entity schema="Affordable_Housing.instance" name="dim_boroughtype" color="C1D8EE" x="459" y="527" />
+		<entity schema="Affordable_Housing.instance" name="dim_building_unitstype" color="C1D8EE" x="901" y="357" />
+		<entity schema="Affordable_Housing.instance" name="dim_buildingtype" color="C1D8EE" x="51" y="51" />
+		<entity schema="Affordable_Housing.instance" name="dim_projecttype" color="C1D8EE" x="51" y="425" />
+		<entity schema="Affordable_Housing.instance" name="facts_housing" color="C1D8EE" x="425" y="102" />
+	</layout>
+	<layout name="Default Layout" id="Layout-225" confirmed="y" show_relation="columns" >
+		<callout x="51" y="51" pointer="Round" >
+			<comment><![CDATA[This is a layout - a diagram with tools.
+- Create new entities by right-clicking the layout. 
+- Double-click entity headers to edit.
+- For a better understanding of the schema, create multiple layouts.
+- Deploy the model into the database by converting it first to the physical design.]]></comment>
+		</callout>
+		<script name="SQL_Editor" id="Editor-11cf" language="SQL" >
+			<string><![CDATA[CREATE SCHEMA IF NOT EXISTS "instance";
+
+CREATE  TABLE "instance".dim_borough_block_lottype ( 
+	borough_block_lottype_id integer  NOT NULL  ,
+	"latitude(internal)" varchar(100)    ,
+	"longitude(internal)" varchar(100)    ,
+	CONSTRAINT pk_borough_block_lot PRIMARY KEY ( borough_block_lottype_id )
+ );
+
+CREATE  TABLE "instance".dim_boroughtype ( 
+	boroughtype_id       integer  NOT NULL  ,
+	postcode             integer    ,
+	community_board      integer    ,
+	CONSTRAINT pk_borough PRIMARY KEY ( boroughtype_id )
+ );
+
+CREATE  TABLE "instance".dim_building_unitstype ( 
+	building_unitstype_id integer  NOT NULL  ,
+	studio_units         integer    ,
+	"1_br_units"         integer    ,
+	"2_br_units"         integer    ,
+	"3_br_units"         integer    ,
+	"4_br_units"         integer    ,
+	"5_br_units"         integer    ,
+	"6_br_units"         integer    ,
+	unknown_br_units     integer    ,
+	total_units          integer    ,
+	other_units          integer    ,
+	CONSTRAINT pk_building_units PRIMARY KEY ( building_unitstype_id )
+ );
+
+CREATE  TABLE "instance".dim_buildingtype ( 
+	building_id          integer    ,
+	buildingtype_id      integer  NOT NULL  ,
+	house_number         integer    ,
+	street_name          varchar(100)    ,
+	bin                  integer    ,
+	postcode             integer    ,
+	nta                  varchar(100)    ,
+	latitude             varchar(100)    ,
+	longitude            varchar(100)    ,
+	reporting_construction_type varchar(100)    ,
+	CONSTRAINT pk_buildingtype_id UNIQUE ( buildingtype_id ) ,
+	CONSTRAINT pk_buildingtype_id_001 UNIQUE ( buildingtype_id ) ,
+	CONSTRAINT pk_buildingtype_id_002 UNIQUE ( buildingtype_id ) ,
+	CONSTRAINT pk_buildingtype_id_003 UNIQUE ( buildingtype_id ) ,
+	CONSTRAINT pk_dim_buildingtype PRIMARY KEY ( buildingtype_id )
+ );
+
+CREATE  TABLE "instance".dim_projecttype ( 
+	projecttype_id       integer  NOT NULL  ,
+	project_name         varchar(100)    ,
+	extended_affordability_only varchar(100)    ,
+	prevailing_wage_status varchar(100)    ,
+	CONSTRAINT pk_project PRIMARY KEY ( projecttype_id )
+ );
+
+CREATE  TABLE "instance".entity ( 
+ );
+
+CREATE  TABLE "instance".facts_housing ( 
+	fact_id              integer  NOT NULL  ,
+	"extremely_low-income_units" integer    ,
+	"very_low-income_units" integer    ,
+	low_income_units     integer    ,
+	moderate_income_units integer    ,
+	middle_income_units  integer    ,
+	counted_rental_units integer    ,
+	counted_homeownership_units integer    ,
+	all_counted_units    integer    ,
+	total_units          integer    ,
+	projecttype_id       integer    ,
+	borough_block_lottype_id integer    ,
+	building_unitstype_id integer    ,
+	buildingtype_id      integer    ,
+	boroughtype_id       integer    ,
+	CONSTRAINT pk_fact PRIMARY KEY ( fact_id )
+ );
+]]></string>
+		</script>
+	</layout>
+</project>

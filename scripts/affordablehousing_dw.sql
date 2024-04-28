@@ -60,8 +60,8 @@ CREATE  TABLE "instance".entity (
 
 CREATE  TABLE "instance".facts_housing ( 
 	fact_id              integer  NOT NULL  ,
-	"extremely_low-income_units" integer    ,
-	"very_low-income_units" integer    ,
+	extremely_low_income_units integer    ,
+	very_low_income_units integer    ,
 	low_income_units     integer    ,
 	moderate_income_units integer    ,
 	middle_income_units  integer    ,
@@ -74,5 +74,7 @@ CREATE  TABLE "instance".facts_housing (
 	building_unitstype_id integer    ,
 	buildingtype_id      integer    ,
 	boroughtype_id       integer    ,
+	total_low_income_units integer    ,
+	total_non_low_income_units integer    ,
 	CONSTRAINT pk_fact PRIMARY KEY ( fact_id )
  );

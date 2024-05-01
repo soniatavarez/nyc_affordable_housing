@@ -1,19 +1,19 @@
-CREATE SCHEMA IF NOT EXISTS "instance";
+CREATE SCHEMA IF NOT EXISTS "affordablehousing";
 
-CREATE  TABLE "instance".dim_borough_block_lottype ( 
+CREATE  TABLE "affordablehousing".dim_borough_block_lottype ( 
 	borough_block_lottype_id integer  NOT NULL  ,
 	"latitude(internal)" varchar(100)    ,
 	"longitude(internal)" varchar(100)    ,
 	CONSTRAINT pk_borough_block_lot PRIMARY KEY ( borough_block_lottype_id )
  );
 
-CREATE  TABLE "instance".dim_boroughtype ( 
+CREATE  TABLE "affordablehousing".dim_boroughtype ( 
 	boroughtype_id       integer  NOT NULL  ,
 	borough_name         varchar(100)    ,
 	CONSTRAINT pk_borough PRIMARY KEY ( boroughtype_id )
  );
 
-CREATE  TABLE "instance".dim_building_unitstype ( 
+CREATE  TABLE "affordablehousing".dim_building_unitstype ( 
 	building_unitstype_id integer  NOT NULL  ,
 	studio_units         integer    ,
 	"1_br_units"         integer    ,
@@ -28,7 +28,7 @@ CREATE  TABLE "instance".dim_building_unitstype (
 	CONSTRAINT pk_building_units PRIMARY KEY ( building_unitstype_id )
  );
 
-CREATE  TABLE "instance".dim_buildingtype ( 
+CREATE  TABLE "affordablehousing".dim_buildingtype ( 
 	building_id          integer    ,
 	buildingtype_id      integer  NOT NULL  ,
 	house_number         integer    ,
@@ -47,7 +47,7 @@ CREATE  TABLE "instance".dim_buildingtype (
 	CONSTRAINT pk_dim_buildingtype PRIMARY KEY ( buildingtype_id )
  );
 
-CREATE  TABLE "instance".dim_projecttype ( 
+CREATE  TABLE "affordablehousing".dim_projecttype ( 
 	projecttype_id       integer  NOT NULL  ,
 	project_name         varchar(100)    ,
 	extended_affordability_only varchar(100)    ,
@@ -55,10 +55,10 @@ CREATE  TABLE "instance".dim_projecttype (
 	CONSTRAINT pk_project PRIMARY KEY ( projecttype_id )
  );
 
-CREATE  TABLE "instance".entity ( 
+CREATE  TABLE "affordablehousing".entity ( 
  );
 
-CREATE  TABLE "instance".facts_housing ( 
+CREATE  TABLE "affordablehousing".facts_housing ( 
 	fact_id              integer  NOT NULL  ,
 	"extremely_low-income_units" integer    ,
 	"very_low-income_units" integer    ,

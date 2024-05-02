@@ -2,3 +2,6 @@
 .idea/modules.xml
 .idea/dataSources.xml
 .idea/CIS9440-Homework.iml
+scripts/.ipynb_checkpoints/transform-checkpoint.ipynb
+documents/~$data_dictionary.xlsx
+scripts/transform.ipynb

@@ -42,7 +42,7 @@
 			<column name="total_units" prior="TotalUnits" type="INT" jt="4" />
 			<column name="project_id" prior="projectType_id" type="INT" jt="4" />
 			<column name="boroughType_id" prior="dboroughType_id" type="INT" jt="4" />
-			<column name="building_id" type="INT" jt="4" mandatory="y" />
+			<column name="building_id" type="INT" jt="4" />
 			<column name="studio_units" type="INT" jt="4" />
 			<column name="1_br_units" type="INT" jt="4" />
 			<column name="2_br_units" type="INT" jt="4" />

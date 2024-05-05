@@ -1,10 +1,9 @@
 CREATE SCHEMA IF NOT EXISTS "affordablehousing";
 
 CREATE  TABLE "affordablehousing".dim_boroughtype ( 
-	boroughtype_id       integer  NOT NULL  ,
-	postcode             integer    ,
-	community_board      integer    ,
-	CONSTRAINT pk_borough PRIMARY KEY ( boroughtype_id )
+	borough_id           integer  NOT NULL  ,
+	borough_name         varchar(100)    ,
+	CONSTRAINT pk_borough PRIMARY KEY ( borough_id )
  );
 
 CREATE  TABLE "affordablehousing".dim_buildingtype ( 
@@ -39,7 +38,7 @@ CREATE  TABLE "affordablehousing".facts_housing (
 	all_counted_units    integer    ,
 	total_units          integer    ,
 	project_id           integer    ,
-	boroughtype_id       integer    ,
+	borough_id           integer    ,
 	building_id          integer  NOT NULL  ,
 	studio_units         integer    ,
 	"1_br_units"         integer    ,

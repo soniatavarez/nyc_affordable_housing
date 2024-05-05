@@ -3,11 +3,10 @@
 	<schema name="INSTANCE" catalogname="Affordable_Housing" >
 		<table name="Entity" />
 		<table name="dim_boroughType" prior="Borough" >
-			<column name="boroughType_id" prior="BoroughID" type="INT" jt="4" mandatory="y" />
-			<column name="postcode" prior="Postcode" type="INT" jt="4" />
-			<column name="community_board" prior="CommunityBoard" type="INT" jt="4" />
+			<column name="borough_id" prior="boroughType_id" type="INT" jt="4" mandatory="y" />
+			<column name="borough_name" type="VARCHAR" length="100" jt="12" />
 			<index name="pk_Borough" unique="PRIMARY_KEY" >
-				<column name="boroughType_id" />
+				<column name="borough_id" />
 			</index>
 		</table>
 		<table name="dim_buildingType" prior="dime_buildingType" >
@@ -41,7 +40,7 @@
 			<column name="all_counted_units" prior="AllCountedUnits" type="INT" jt="4" />
 			<column name="total_units" prior="TotalUnits" type="INT" jt="4" />
 			<column name="project_id" prior="projectType_id" type="INT" jt="4" />
-			<column name="boroughType_id" prior="dboroughType_id" type="INT" jt="4" />
+			<column name="borough_id" prior="boroughType_id" type="INT" jt="4" />
 			<column name="building_id" type="INT" jt="4" mandatory="y" />
 			<column name="studio_units" type="INT" jt="4" />
 			<column name="1_br_units" type="INT" jt="4" />
@@ -59,7 +58,7 @@
 				<fk_column name="project_id" pk="project_id" />
 			</fk>
 			<fk name="fk_facts_housing_dim_boroughType" virtual="y" to_schema="Affordable_Housing.INSTANCE" to_table="dim_boroughType" type="NonIdentifying" mandatory="n" cardinality="OneMore" range_from="0" range_to="0" >
-				<fk_column name="boroughType_id" pk="boroughType_id" />
+				<fk_column name="borough_id" pk="borough_id" />
 			</fk>
 			<fk name="fk_facts_housing_dim_buildingType" to_schema="Affordable_Housing.INSTANCE" to_table="dim_buildingType" type="NonIdentifying" mandatory="n" cardinality="OneMore" range_from="0" range_to="0" >
 				<fk_column name="building_id" pk="building_id" />

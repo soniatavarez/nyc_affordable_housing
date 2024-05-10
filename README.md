@@ -7,6 +7,3 @@ This data lists housing projects for Housing New York or The Housing Blueprint. 
 
 ### Folders
 scripts: contains all scripts created
-documents: contains homework prompts, data dictionary, and data mapping 
-datawarehouse model: contains dimensional model and dbschema files 
-

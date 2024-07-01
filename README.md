@@ -5,10 +5,6 @@ https://data.cityofnewyork.us/Housing-Development/Affordable-Housing-Production-
 
 This data lists housing projects for Housing New York or The Housing Blueprint. These two projects create and preserve affordable housing. The data lists projects since 2014.
 
-[Tableau Data Visualization](https://prod-useast-b.online.tableau.com/t/soniantavarez6958a9b8b6/views/NYCAffordableHousing/NYCAffordableHousing)
-
-*If link doesn't work, see documents folder for PDF Copy
-
 ### Folders
 scripts: contains python script for ETL
 

@@ -1,17 +1,20 @@
 # NYC Affordable Housing
 
-Affordable Housing Production by Building Data from NYC Open Data:
-https://data.cityofnewyork.us/Housing-Development/Affordable-Housing-Production-by-Building/hg8x-zxpr/about_data
+For my Data Warehousing and Analytics course, I completed a project that involved sourcing data, creating an ETL pipeline via python scripts, and visualizing the results using a business intelligence tool. I used DataGrip, Azure Cloud Storage, PostgreSQL, DbSchema, and Tableau for this project.
 
-This data lists housing projects for Housing New York or The Housing Blueprint. These two projects create and preserve affordable housing. The data lists projects since 2014.
+<img width="796" alt="Screenshot 2024-07-02 at 7 59 37 PM" src="https://github.com/soniatavarez/nyc_affordable_housing/assets/159973059/af3c4efa-d5bb-4510-987c-0f2011461d13">
+
+
+<img width="1051" alt="Screenshot 2024-07-02 at 7 50 31 PM" src="https://github.com/soniatavarez/nyc_affordable_housing/assets/159973059/6e98dfa3-9674-48bc-afc9-6d7042a95bcb">
+
 
 ### Folders
-scripts: contains python script for ETL
+scripts: contains python script for ETL pipeline
 
-documents: contains data dictionary, data pipeline, and data visualization
+documents: contains data dictionary, data pipeline model, and data visualization
 
 datawarehouse: contains datawarehouse sql script, dbschema files, and dimensional model.
 
-### Known Issues
 
-Duplicate tables were created in the public and affordable housing schema, dropped the tables in the affordable housing schema via DataGrip
+Affordable Housing Production by Building Data from NYC Open Data:
+https://data.cityofnewyork.us/Housing-Development/Affordable-Housing-Production-by-Building/hg8x-zxpr/about_data
